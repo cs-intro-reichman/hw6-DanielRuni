@@ -118,7 +118,7 @@ public class Runigram {
 				grayColors [i] [j] = luminance(image [i] [j]);
 			}
 		}
-		return null;
+		return grayColors;
 	}	
 	
 	/**
