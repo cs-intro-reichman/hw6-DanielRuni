@@ -25,6 +25,8 @@ public class Runigram {
 		System.out.println();
 		
 		// Write here whatever code you need in order to test your work.
+		System.out.println("testing scaled: ");
+		print(scaled(tinypic, 3, 5));
 		// You can continue using the image array.
 	}
 
@@ -127,8 +129,13 @@ public class Runigram {
 	 * The image is scaled (resized) to have the given width and height.
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
-		//// Replace the following statement with your code
-		return null;
+		Color [][] scaledImage = new Color [height][width];
+		for (int i=0; i<scaledImage.length; i++) {
+			for (int j=0; j<scaledImage[0].length; j++) {
+				scaledImage [i] [j] = image [(int) (i*((double) image.length / height))] [(int) (j*((double) image[0].length / width))];
+			}
+		}
+		return scaledImage;
 	}
 	
 	/**
