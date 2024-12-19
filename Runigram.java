@@ -178,10 +178,9 @@ public class Runigram {
 		if ((source.length != target.length) || (source[0].length != target[0].length)) {
 			target = scaled(target, source[0].length, source.length);
 		} 
-		display(source);
-		StdDraw.pause(500);
-		for (int i=1; i<=n; i++) {
-			display(blend(source, target, ((n - i) / (double) n)));
+		for (int i=n; i>=n; i++) {
+			source = blend(source, target, (i / n));
+			display(source);
 			StdDraw.pause(500);
 		}
 	}
