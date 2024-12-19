@@ -130,9 +130,10 @@ public class Runigram {
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
 		Color [][] scaledImage = new Color [height][width];
+		int imageHeight = image.length , imageWidth = image[0].length;
 		for (int i=0; i<scaledImage.length; i++) {
 			for (int j=0; j<scaledImage[0].length; j++) {
-				scaledImage [i] [j] = image [(int) (i*((double) image.length / height))] [(int) (j*((double) image[0].length / width))];
+				scaledImage [i] [j] = image [(int) (i*((double) imageHeight / height))] [(int) (j*((double) imageWidth / width))];
 			}
 		}
 		return scaledImage;
@@ -145,9 +146,9 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
-		int red = ((int) alpha * c1.getRed()) + ((int) (1 - alpha) * c2.getRed());
-		int green = ((int) alpha * c1.getGreen()) + ((int) (1 - alpha) * c2.getGreen());
-		int blue = ((int) alpha * c1.getBlue()) + ((int) (1 - alpha) * c2.getBlue());
+		int red = (int) (( alpha * c1.getRed()) + ((1 - alpha) * c2.getRed()));
+		int green = (int) (( alpha * c1.getGreen()) + ((1 - alpha) * c2.getGreen()));
+		int blue = (int) (( alpha * c1.getBlue()) + ((1 - alpha) * c2.getBlue()));
 		Color blended  = new Color (red , green , blue);
 		return blended;
 	}
@@ -160,8 +161,8 @@ public class Runigram {
 	 */
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
 		Color [] [] blended = new Color [image1.length] [image1[0].length];
-		for (int i=0; i<image1.length; i++) {
-			for (int j=0; j<image1[0].length; j++) {
+		for (int i=0; i<blended.length; i++) {
+			for (int j=0; j<blended[0].length; j++) {
 				blended [i] [j] = blend(image1 [i][j], image2 [i][j], alpha);
 			}
 		}
@@ -179,9 +180,9 @@ public class Runigram {
 			target = scaled(target, source[0].length, source.length);
 		} 
 		for (int i=n; i>=n; i++) {
-			source = blend(source, target, (i / n));
 			display(source);
 			StdDraw.pause(500);
+			source = blend(source, target, (i / n));
 		}
 	}
 	
