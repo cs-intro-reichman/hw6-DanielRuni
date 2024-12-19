@@ -183,6 +183,7 @@ public class Runigram {
 			display(source);
 			StdDraw.pause(500);
 		}
+		
 	}
 	
 	/** Creates a canvas for the given image. */
